@@ -1,126 +1,104 @@
-# 🌐 Multilingual FAQ System  
+# Hiring Test for Backend Developers
+- NOTE : You can use NodeJs/Python/ (Django/ExpressJS or any other framework of your choice as well)
 
-A Django-based FAQ management system with multilingual support, WYSIWYG editor integration, and efficient caching for seamless performance.  
-
----
-
-## 🚀 Features  
-
-- 🌍 **Multilingual Support:** Manage FAQs in English, Hindi, and Bengali.  
-- 📝 **WYSIWYG Editor:** Rich text editing with **django-ckeditor** integration.  
-- 🔄 **Automatic Translation:** Powered by the **Google Translate API** for quick language switching.  
-- ⚡ **Caching:** Optimized performance with smart caching mechanisms.  
-- 📡 **RESTful API:** Flexible API endpoints with dynamic language selection.  
-- 🎛️ **Django Admin Interface:** Comprehensive and user-friendly admin dashboard.  
+## **Objective**
+The objective of this test is to evaluate the candidate’s ability to:
+- Design and implement Django models with **WYSIWYG editor support**.
+- Store and manage **FAQs with multi-language translation**.
+- Follow **PEP8 conventions** and best practices.
+- Write a **clear and detailed README**.
+- Use **proper Git commit messages**.
 
 ---
 
-## 🛠️ Tech Stack  
+## **Task Requirements**
 
-- **Framework:** Django  
-- **Editor:** django-ckeditor  
-- **Translation:** Google Translate API  
-- **Caching:** Django Caching Framework  
-- **Database:** SQLite (default, can be configured for PostgreSQL/MySQL)  
-- **API Testing:** pytest  
+### **1. Model Design**
+- Create a model to store **FAQs**.
+- Each FAQ should have:
+  - A **question** (TextField)
+  - An **answer** (RichTextField for WYSIWYG editor support)
+  - Language-specific translations (`question_hi`, `question_bn`, etc.).
+- Implement a **model method** to retrieve translated text dynamically.
 
----
+### **2. WYSIWYG Editor Integration**
+- Use **django-ckeditor** to allow users to format answers properly.
+- Ensure that the WYSIWYG editor supports **multilingual content**.
 
-## 📥 Installation Guide  
+### **3. API Development**
+- Create a ** REST API** for managing FAQs.
+- Support **language selection** via `?lang=` query parameter.
+- Ensure responses are **fast and efficient** using pre-translation.
 
-### 1️⃣ Clone the Repository  
-```bash
-https://github.com/DikshantBadawadagi/BharatFD_Backend.git
-cd faq_multilingual 
-```
+### **4. Caching Mechanism**
+- Implement ** cache framework** to store translations.
+- Use **Redis** for improved performance.
 
-### 2️⃣ Create the virtual environment
-```bash
-# Create virtual environment
-python -m venv venv
-```
+### **5. Multi-language Translation Support**
+- Use **Google Translate API** or `googletrans`.
+- Automate translations during object creation.
+- Provide **fallback to English** if translation is unavailable.
 
-### 3️⃣ Activate the virtual environment
-```bash
-# Activate on Windows
-venv\Scripts\activate
+### **6.  Admin Panel**
+- Register the **FAQ model** in the  Admin site or create one seperately.
+- Enable a **user-friendly admin interface** for managing FAQs.
 
-# Activate on macOS/Linux
-source venv/bin/activate
-```
+### **7. Unit Tests & Code Quality**
+- Write **unit tests** using `pytest` or `mocha`/`chai`.
+- Ensure tests cover **model methods and API responses**.
+- Follow **PEP8/ES6 guidelines** and use `flake8/JS tools` for linting.
 
-### 4️⃣ Install dependencies
-```bash
-pip install -r requirements.txt
-```
+### **8. Documentation**
+- Write a **detailed README** with:
+  - Installation steps
+  - API usage examples
+  - Contribution guidelines
+- Ensure the **README is well-structured and easy to follow**.
 
-### 5️⃣Add your environment variables
+### **9. Git & Version Control**
+- Use **Git for version control**.
+- Follow **conventional commit messages**:
+  - `feat: Add multilingual FAQ model`
+  - `fix: Improve translation caching`
+  - `docs: Update README with API examples`
+- Ensure **atomic commits** with clear commit messages.
 
-### 6️⃣ Apply Migrations
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
-
-### 7️⃣ Run the server
-```bash
-python manage.py runserver
-```
-### Your application will be live at:
-📍 http://127.0.0.1:8000/
-
----
-
-### 📡 API Usage
-
-### 🔍 List All FAQs
-```bash
-GET /api/faqs/
-```
-
-### 🌐 Get FAQs in a Specific Language
-```bash
-GET /api/faqs/?lang=hi   # For Hindi
-GET /api/faqs/?lang=bn   # For Bengali
-```
-
-### ➕ Create a New FAQ
-```bash
-POST /api/faqs/
-Content-Type: application/json
-
-{
-    "question": "How does caching improve website performance?",
-    "answer": "Caching stores frequently accessed data temporarily, reducing server load and improving response times."
-}
-```
+### **10. Deployment & Docker Support (Bonus)**
+- Provide a **Dockerfile** and **docker-compose.yml**.
+- Deploy the application to **Heroku** or **AWS** (optional).
 
 ---
 
-### ✅ Running Tests
-Run the full test suite using pytest:
+## **Evaluation Criteria**
+Candidates will be evaluated based on:
+1. **Code Quality** (PEP8 compliance, readability, and modularity).
+2. **Functionality** (API correctness, multilingual support, and caching efficiency).
+3. **Documentation** (README completeness and clarity).
+4. **Testing** (Coverage and effectiveness of unit tests).
+5. **Git Best Practices** (Commit messages and branching strategy).
+
+---
+
+## **Submission Instructions**
+- **Attempt the assignment** and complete your solution.
+- **Open an issue** in our repository with the relevant tag (`backend` or `frontend`, depending on the test you're applying for).
+- **Once done, tag @theakshaydhiman** in the issue, and we will review your code.
+- **Include the link to your GitHub repository**, which must be **publicly accessible**.
+
+---
+
+## **Example API Usage**
 ```bash
-pytest
+# Fetch FAQs in English (default)
+curl http://localhost:8000/api/faqs/
+
+# Fetch FAQs in Hindi
+curl http://localhost:8000/api/faqs/?lang=hi
+
+# Fetch FAQs in Bengali
+curl http://localhost:8000/api/faqs/?lang=bn
 ```
 
 ---
 
-### 🤝 Contributing
-### Fork the repository
-
-### Create your feature branch:
-```bash
-git checkout -b feature/awesome-feature
-```
-### Commit your changes:
-```bash
-git commit -m 'Add awesome feature'
-```
-### Push toi your branch:
-```bash
-git push origin feature/awesome-feature
-```
-
----
-
-### 🚀 Made with ❤️ using Django
+This test ensures the candidate demonstrates **full-stack Django development skills**, covering **models, APIs, caching, internationalization, and documentation**. 🚀
